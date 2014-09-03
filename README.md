@@ -5,8 +5,8 @@ A simple demo of using Angular to refresh (without reload) Drupal content.
 
 ##Installation
 
-1. Install `Angular Refresh` module.
-2. Revert json_article feature. `drush fr json_article -y`
+1. Install `Angular Refresh` module. `drush en angular_refresh -y`
+2. Revert json_article feature. `drush en json_article -y` then `drush fr json_article -y`
 3. Update your `html.tpl.php` to add these attributes.
    * `ng-app="refresher"` on `html` tag
    * `ng-controller="BodyController"` on `body` tag
