@@ -7,10 +7,10 @@
 /**
  * Implements hook_menu().
  */
-function angular_view_menu() {
-  $items['nodes/view/article'] = array(
-    'title' => 'Articles',
-    'page callback' => 'angular_view_build_page',
+function angular_refresh_menu() {
+  $items['nodes/articles'] = array(
+    'title' => 'Angular Refresh',
+    'page callback' => 'angular_refresh_build_page',
     'access arguments' => array('access content'),
   );
 
@@ -23,7 +23,7 @@ function angular_view_menu() {
  *
  * The tpl file is where we display the content in Angular way.
  */
-function angular_view_theme() {
+function angular_refresh_theme() {
   return array(
     'all_articles' => array(
       'template' => 'all-articles',
@@ -35,8 +35,8 @@ function angular_view_theme() {
 /**
  * Build the page.
  */
-function angular_view_build_page() {
-  $module_path = drupal_get_path('module', 'angular_view');
+function angular_refresh_build_page() {
+  $module_path = drupal_get_path('module', 'angular_refresh');
   // Make sure angularjs library is present when we bootstrap this page.
   drupal_add_library('angularjs', 'angularjs');
   drupal_add_js($module_path . '/js/angular-refresh/angular-refresh.js', array(
