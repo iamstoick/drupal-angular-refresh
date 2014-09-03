@@ -1,0 +1,57 @@
+<?php
+/**
+ * @file
+ * Angularify module file.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function angular_view_menu() {
+  $items['nodes/view/article'] = array(
+    'title' => 'Articles',
+    'page callback' => 'angular_view_build_page',
+    'access arguments' => array('access content'),
+  );
+
+  return $items;
+}
+
+
+/**
+ * Implements hook_theme().
+ *
+ * The tpl file is where we display the content in Angular way.
+ */
+function angular_view_theme() {
+  return array(
+    'all_articles' => array(
+      'template' => 'all-articles',
+    ),
+  );
+}
+
+
+/**
+ * Build the page.
+ */
+function angular_view_build_page() {
+  $module_path = drupal_get_path('module', 'angular_view');
+  // Make sure angularjs library is present when we bootstrap this page.
+  drupal_add_library('angularjs', 'angularjs');
+  drupal_add_js($module_path . '/js/angular-refresh/angular-refresh.js', array(
+    'scope' => 'footer',
+    'group' => JS_THEME,
+    'every_page' => TRUE,
+    'weight' => -2,
+  ));
+  // Bootstrap the angular-article-view.js when the the callback is called.
+  drupal_add_js($module_path . '/js/angular-refresher-view.js', array(
+    'scope' => 'footer',
+    'group' => JS_THEME,
+    'every_page' => TRUE,
+    'weight' => -3,
+  ));
+
+  return theme('all_articles');
+}
