@@ -1,14 +1,14 @@
 <?php
 /**
  * @file
- * Angularify module file.
+ * Angular Refresh module file.
  */
 
 /**
  * Implements hook_menu().
  */
 function angular_refresh_menu() {
-  $items['nodes/articles'] = array(
+  $items['nodes/refresh/list'] = array(
     'title' => 'Angular Refresh',
     'page callback' => 'angular_refresh_build_page',
     'access arguments' => array('access content'),

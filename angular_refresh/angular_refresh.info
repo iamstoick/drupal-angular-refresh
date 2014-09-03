@@ -1,5 +1,5 @@
-name = Angularify
-description = Displays articles in Angular way
+name = Angular Refresh
+description = Update content or content list using Angular Refresh
 version = 7.x-1.0
 core = 7.x
 dependencies[] = angularjs
